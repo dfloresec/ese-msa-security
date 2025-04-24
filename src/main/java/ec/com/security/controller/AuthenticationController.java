@@ -22,13 +22,13 @@ public class AuthenticationController {
 
 	@GetMapping(value = "/token")
 	@ResponseStatus(HttpStatus.OK)
-	private Map<String, String> generateToken(@RequestBody RequestTokenDto request) {
+	public Map<String, String> generateToken(@RequestBody RequestTokenDto request) {
 		return authenticationService.generateToken(request);
 	}
 
 	@PostMapping(value = "/validateToken")
 	@ResponseStatus(HttpStatus.OK)
-	private void validateToken(@RequestHeader("Authorization") String bearerToken,
+	public void validateToken(@RequestHeader("Authorization") String bearerToken,
 			@RequestHeader("clientSecret") String clientSecret) {
 		authenticationService.validateToken(bearerToken, clientSecret);
 	}
